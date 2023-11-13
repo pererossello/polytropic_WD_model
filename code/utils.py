@@ -1,16 +1,6 @@
 import numpy as np
 import numba
 
-
-@numba.njit
-def verlet_step(pos, vel, acc, dt):
-    half_vel_next = vel + 0.5 * acc * dt
-    pos_next = pos + half_vel_next * dt
-    a_next = acc
-    vel_next = half_vel_next + 0.5 * a_next * dt
-    return pos_next, vel_next
-
-
 def RK4_second_order(t, x, v, f, h):
     try:
         k1_x = h * v
